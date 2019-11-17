@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express'
+import { connection } from '../db/db'
+import { checkToken } from '../security/jwt'
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
-module.exports = router;
+const userController=express.Router();
+
+userController.post('/login', (request, response)=>
+{
+  console.log(request.body);
+})
+
+
+
+export {
+  userController
+}
