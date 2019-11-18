@@ -1,13 +1,10 @@
 import jwt from 'jsonwebtoken'
-
-const config={
-  secret:"iamthebest"
-}
+require('dotenv').config();
 
 let checkToken = (req, res, next) => {
     let token = req.headers['x-access-token'] || req.headers['authorization'];
     if (token) {
-      jwt.verify(token, config.secret, (err, decoded) => {
+      jwt.verify(token, process.env.SECRET, (err, decoded) => {
         if (err) {
           console.log(err);
             console.log('not valid')

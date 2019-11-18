@@ -5,10 +5,6 @@ import shortid from 'shortid'
 import jwt from 'jsonwebtoken'
 import cookieParser from 'cookie-parser'
 
-const config={
-  secret:"iamthebest"
-}
-
 const userController=express.Router();
 
 userController.use(cookieParser());
@@ -27,7 +23,7 @@ userController.post('/login', (request, response)=>
     if(result.length>0)
     {
       let token = jwt.sign({email: email},
-        config.secret,
+        process.env.SECRET,
         { 
           expiresIn: '1h' //expires in 24 hours
         }
