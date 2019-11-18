@@ -5,17 +5,13 @@ const config={
 }
 
 let checkToken = (req, res, next) => {
-    let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
+    let token = req.headers['x-access-token'] || req.headers['authorization'];
     if (token) {
       jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
           console.log(err);
             console.log('not valid')
-          return res.json({
-            success: false,
-            code:'304',
-            message: 'Token is not valid'
-          });
+          res.status(401).send({ code:401, message:"Unauthorized" });
         } else {
           req.decoded = decoded;
           next();
@@ -23,11 +19,7 @@ let checkToken = (req, res, next) => {
       });
     } else {
         console.log('not supplied');
-      return res.json({
-        success: false,
-        message: 'Auth token is not supplied',
-        code:'305'
-      });
+        res.status(401).send({ code:401, message:"Unauthorized" });
     }
   };
 

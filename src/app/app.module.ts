@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TodosComponent } from './todos/todos.component';
 import { ErrorComponent } from './error/error.component';
+import { HttpinterceptorService } from './service/http/httpinterceptor.service'
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide:HTTP_INTERCEPTORS, useClass:HttpinterceptorService, multi:true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

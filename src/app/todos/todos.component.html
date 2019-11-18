@@ -1,1 +1,34 @@
-<p>todos works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 shadow p-2">
+            <form [formGroup]="todoForm" (ngSubmit)="upload()">
+                <div class="form-group">
+                  <label for="todo">Enter Todos</label>
+                  <input formControlName="todo" type="email" class="form-control" id="todo" placeholder="Enter todos">
+                </div>
+                <button type="submit" class="btn btn-primary">upload</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <p class="text-center">All Todos</p>
+            <ng-container *ngIf="todos.length>0; then todoBlock; else noTodoBlock;"></ng-container>
+            <ng-template #todoBlock>
+                <ul class="list-group" *ngFor="let todo of todos">
+                    <li class="list-group-item" id="{{ todo.id }}">
+                        <p>{{ todo.todos }}</p>
+                        <i class="fa fa-minus-circle ml-3" aria-hidden="true" (click)="delete(todo.id)"></i>
+                        <i class="fa fa-pencil-square-o ml-3" aria-hidden="true" (click)="edit(todo.id)"></i>
+                    </li>
+                </ul>
+            </ng-template>
+            <ng-template #noTodoBlock>
+                <p>No Todos</p>
+            </ng-template>
+        </div>
+    </div>
+    <div #default>
+        <button>click here</button>
+    </div>
+</div>

@@ -9,9 +9,6 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    <small *ngIf="(password.dirty || password.touched) && password.errors.isValidPassword.valid">
-                        Should be of 6 character long
-                    </small>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
