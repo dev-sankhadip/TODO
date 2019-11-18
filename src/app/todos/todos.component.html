@@ -16,8 +16,8 @@
             <ng-container *ngIf="todos.length>0; then todoBlock; else noTodoBlock;"></ng-container>
             <ng-template #todoBlock>
                 <ul class="list-group" *ngFor="let todo of todos">
-                    <li class="list-group-item" id="{{ todo.id }}">
-                        <p>{{ todo.todos }}</p>
+                    <li class="list-group-item">
+                        <p contenteditable="false" id="{{ todo.id }}">{{ todo.todos }}</p>
                         <i class="fa fa-minus-circle ml-3" aria-hidden="true" (click)="delete(todo.id)"></i>
                         <i class="fa fa-pencil-square-o ml-3" aria-hidden="true" (click)="edit(todo.id)"></i>
                     </li>

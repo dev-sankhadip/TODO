@@ -9,7 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TodosComponent } from './todos/todos.component';
 import { ErrorComponent } from './error/error.component';
-import { HttpinterceptorService } from './service/http/httpinterceptor.service'
+import { HttpinterceptorService } from './service/http/httpinterceptor.service';
+import { EditTodoComponent } from './edit-todo/edit-todo.component'
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpinterceptorService } from './service/http/httpinterceptor.service'
     LoginComponent,
     SignupComponent,
     TodosComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditTodoComponent
   ],
   imports: [
     BrowserModule,

@@ -58,6 +58,23 @@ todoController.delete('/delete/:id',checkToken, function(request, response)
 })
 
 
+todoController.get('/single/:id',checkToken,function(request, response)
+{
+  const { id }=request.params;
+  const { email }=request.decoded;
+  var sqlTodoSelectQuery="select todos from todos where email = ? and id = ?";
+  connection.query(sqlTodoSelectQuery,[email, id], function(err, result)
+  {
+    if(err)
+    {
+      console.log(err);
+      response.status(500).send({ code:500, message:"Internal Error" });
+    }
+    response.status(200).send({ code:200, result });
+  })
+  console.log(id);
+})
+
 export{
   todoController
 }

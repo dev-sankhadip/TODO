@@ -24,4 +24,9 @@ export class TodoService {
     return this.http.delete(`http://localhost:2200/todo/delete/${id}`);
   }
 
+  getTodo(id)
+  {
+    return this.http.get(`http://localhost:2200/todo/single/${id}`)
+  }
+
 }

@@ -7,13 +7,15 @@ import cors from 'cors'
 
 import { userController } from './routes/users'
 import { todoController } from './routes/todos'
+import { uploadController } from './routes/fileUpload';
+
 
 
 const app = express();
 
 app.listen(2200, function()
 {
-    console.log('runnin on 2200');
+    console.log('running on 2200');
 })
 
 app.use(logger('dev'));
@@ -24,7 +26,7 @@ app.use(cors());
 
 app.use('/todo', todoController);
 app.use('/users', userController);
-
+app.use('/file', uploadController);
 
 
 module.exports = app;

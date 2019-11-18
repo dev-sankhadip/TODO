@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { TodoService } from '../service/todo.service';
-
+import { Router } from  '@angular/router'
 
 
 @Component({
@@ -11,8 +11,10 @@ import { TodoService } from '../service/todo.service';
 })
 export class TodosComponent implements OnInit {
 
-  constructor( private service:TodoService) { }
+  constructor( private service:TodoService, private router:Router) { }
   public todos=[];
+  public isEditable=false;
+
   todoForm=new FormGroup({
     todo:new FormControl('',[Validators.required])
   })
@@ -41,7 +43,7 @@ export class TodosComponent implements OnInit {
     })
   }
   edit(id){
-    console.log(id);
+    this.router.navigate(['edit',id]);
   }
 
   refreshTodo(){

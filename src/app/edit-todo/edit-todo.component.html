@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 shadow p-2">
+            <div class="form-group">
+                <label for="updateTodo">Update Todo</label>
+                <input 
+                type="email" 
+                class="form-control" 
+                id="updateTodo" 
+                placeholder="Update Todo"
+                [value]="todo"
+                >
+            </div>
+            <button (click)="update()" class="btn btn-sm btn-primary">update</button>
+        </div>
+    </div>
+</div>
