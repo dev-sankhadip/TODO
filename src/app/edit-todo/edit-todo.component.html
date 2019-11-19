@@ -8,7 +8,7 @@
                 class="form-control" 
                 id="updateTodo" 
                 placeholder="Update Todo"
-                [value]="todo"
+                [(ngModel)]="todo"
                 >
             </div>
             <button (click)="update()" class="btn btn-sm btn-primary">update</button>

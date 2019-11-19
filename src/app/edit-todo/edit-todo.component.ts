@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { TodoService } from '../service/todo.service';
+import { FormControl } from '@angular/forms'
 
 
 @Component({
@@ -10,9 +11,12 @@ import { TodoService } from '../service/todo.service';
 })
 export class EditTodoComponent implements OnInit {
 
-  constructor( private route:ActivatedRoute, private service:TodoService ) { }
+  constructor( private route:ActivatedRoute, private service:TodoService, private router:Router ) { }
   id:number
   todo:string
+
+  editTodoInput=new FormControl('');
+
   ngOnInit() {
     this.id=this.route.snapshot.params['id'];
     this.service.getTodo(this.id)
@@ -28,6 +32,7 @@ export class EditTodoComponent implements OnInit {
     this.service.updateTodo(this.id, this.todo)
     .subscribe((res)=>{
       console.log(res);
+      this.router.navigate(['todos']);
     },(err)=>{
       console.log(err);
     })
