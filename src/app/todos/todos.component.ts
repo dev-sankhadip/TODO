@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { TodoService } from '../service/todo.service';
 import { Router } from  '@angular/router'
+import { TestComponent } from '../test/test.component';
 
 
 @Component({
@@ -9,16 +10,24 @@ import { Router } from  '@angular/router'
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements AfterViewInit {
+
+  @ViewChild(TestComponent,{static:false}) testChild;
 
   constructor( private service:TodoService, private router:Router) { }
   public todos=[];
   public isEditable=false;
+  public testMessage:string="sankhadip";
+  public childMessageToParent:string;
 
   todoForm=new FormGroup({
     todo:new FormControl('',[Validators.required])
   })
-
+  
+  recieveMessage($event)
+  {
+    console.log($event);
+  }
   upload(){
     this.service.addTodo(this.todoForm.value)
     .subscribe((res)=>{
@@ -54,8 +63,8 @@ export class TodosComponent implements OnInit {
       console.log(err);
     })
   }
-  ngOnInit() {
+  ngAfterViewInit() {
     this.refreshTodo();
+    this.childMessageToParent=this.testChild.messageToParent;
   }
-
 }

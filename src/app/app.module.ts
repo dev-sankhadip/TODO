@@ -10,7 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { TodosComponent } from './todos/todos.component';
 import { ErrorComponent } from './error/error.component';
 import { HttpinterceptorService } from './service/http/httpinterceptor.service';
-import { EditTodoComponent } from './edit-todo/edit-todo.component'
+import { EditTodoComponent } from './edit-todo/edit-todo.component';
+import { TestComponent } from './test/test.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EditTodoComponent } from './edit-todo/edit-todo.component'
     SignupComponent,
     TodosComponent,
     ErrorComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
