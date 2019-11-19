@@ -75,6 +75,22 @@ todoController.get('/single/:id',checkToken,function(request, response)
   console.log(id);
 })
 
+todoController.put('/update', checkToken, function(request, response)
+{
+  const { id, todo }=request.body;
+  const { email }=request.decoded;
+  var updateTodoSqlQuery="update todos set todos = ? where id = ? and email = ?";
+  connection.query(updateTodoSqlQuery,[todo, id, email], function(err, result)
+  {
+    if(err)
+    {
+      console.log(err);
+      response.status(500).send({ code:500, message:"Internal Error" });
+    }
+    response.status(204).send({ code:204 })
+  })
+})
+
 export{
   todoController
 }

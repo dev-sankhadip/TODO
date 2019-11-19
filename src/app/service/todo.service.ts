@@ -29,4 +29,9 @@ export class TodoService {
     return this.http.get(`http://localhost:2200/todo/single/${id}`)
   }
 
+  updateTodo(id, todo)
+  {
+    return this.http.put('http://localhost:2200/todo/update',{id,todo});
+  }
+
 }

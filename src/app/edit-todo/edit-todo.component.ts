@@ -25,7 +25,12 @@ export class EditTodoComponent implements OnInit {
   }
   update()
   {
-    
+    this.service.updateTodo(this.id, this.todo)
+    .subscribe((res)=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    })
   }
 
 }
