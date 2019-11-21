@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { TodoService } from '../service/todo.service';
 import { Router } from  '@angular/router'
@@ -18,6 +18,8 @@ export class TodosComponent implements AfterViewInit {
   public todos=[];
   public isEditable=false;
   public testMessage:string="sankhadip";
+  public testMessage1:string="another message";
+
   public childMessageToParent:string;
 
   todoForm=new FormGroup({
@@ -66,5 +68,8 @@ export class TodosComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.refreshTodo();
     this.childMessageToParent=this.testChild.messageToParent;
+  }
+  ngOnChanges(changes){
+    console.log(changes);
   }
 }

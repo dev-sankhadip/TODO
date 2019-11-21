@@ -28,6 +28,6 @@
             </ng-template>
         </div>
     </div>
-    <app-test [childMessage]="testMessage" (messageEvent)="recieveMessage($event)"></app-test>
+    <app-test [childMessage]="testMessage" [childMessage1]="testMessage1" (messageEvent)="recieveMessage($event)"></app-test>
     {{ childMessageToParent }}
 </div>

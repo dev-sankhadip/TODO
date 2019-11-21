@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-test',
@@ -10,12 +10,16 @@ export class TestComponent implements OnInit {
   constructor() { }
   public messageToParent:string="This is a message to parent";
   @Input() childMessage:string
+  @Input() childMessage1:string
   @Output() messageEvent=new EventEmitter<string>();
   ngOnInit() {
   }
   send()
   {
     this.messageEvent.emit(this.messageToParent);
+  }
+  ngOnChanges(changes){
+    console.log(changes);
   }
 
 }
